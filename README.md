@@ -14,31 +14,20 @@ How to Create an Online Barcode Reader in Python
 3. Copy Python Barcode Reader to ``{Django Project Root}\dwtupload``.
 
     ![copy_python_barcode](http://www.codepool.biz/wp-content/uploads/2015/07/copy_python_barcode.png)
+    
 4. Create a Python module `dbr.py`.
 
     ```Python
     import os.path
-    import DynamsoftBarcodeReader
-
-    formats = {
-        0x1FFL : "OneD",
-        0x1L   : "CODE_39",
-        0x2L : "CODE_128",
-        0x4L   : "CODE_93",
-        0x8L : "CODABAR",
-        0x10L   : "ITF",
-        0x20L : "EAN_13",
-        0x40L   : "EAN_8",
-        0x80L : "UPC_A",
-        0x100L   : "UPC_E",
-    }
+    from dbr import DynamsoftBarcodeReader
+    dbr = DynamsoftBarcodeReader()
 
     def decodeFile(fileName):
         if not os.path.isfile(fileName):
             print "It is not a valid file."
             return
 
-        results = DynamsoftBarcodeReader.decodeFile(fileName)
+        results = dbr.decodeFile(fileName, config.barcodeTypes)
         json = {}
         tmp = []
         i = 0
@@ -69,5 +58,5 @@ Blog
 [2]:http://www.dynamsoft.com/Downloads/WebTWAIN_Download.aspx
 [3]:http://www.dynamsoft.com/Downloads/Dynamic-Barcode-Reader-Download.aspx
 [4]:https://github.com/dynamsoftsamples/dwt-django-file-upload#basic-steps
-[5]:https://github.com/Dynamsoft/Dynamsoft-Barcode-Reader/tree/master/samples/Python
+[5]:https://github.com/dynamsoft-dbr/python
 [6]:http://www.codepool.biz/read-barcode-from-documents.html
