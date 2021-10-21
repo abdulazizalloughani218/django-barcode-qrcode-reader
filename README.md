@@ -1,62 +1,63 @@
 # Online Barcode Reader with Django
-The sample demonstrate how to create an online Barcode Reader with Django, Dynamic Web TWAIN SDK and Dynamsoft Barcode Reader SDK.
+The sample demonstrates how to create an online Barcode Reader with Django, [Dynamic Web TWAIN SDK](https://www.dynamsoft.com/web-twain/overview/) and [Dynamsoft Barcode Reader SDK](https://www.dynamsoft.com/barcode-reader/overview/).
 
-Download & Installation
------------------------
-* [Django][1]
-* [Dynamic Web TWAIN SDK][2]
-* [Dynamsoft Barcode Reader SDK][3]
+## About Dynamic Web TWAIN
+- [![](https://img.shields.io/badge/Download-Offline%20SDK-orange)](https://www.dynamsoft.com/web-twain/downloads)
+- [![](https://img.shields.io/badge/Get-30--day%20FREE%20Trial%20License-blue)](https://www.dynamsoft.com/customer/license/trialLicense/?product=dwt)
 
-How to Create an Online Barcode Reader in Python
------------
-1. Create a new Django project with the [basic steps][4].
-2. Create a simple Python Barcode Reader with the [sample code][5].
-3. Copy Python Barcode Reader to ``{Django Project Root}\dwtupload``.
+## About Dynamsoft Barcode Reader
+- [![](https://img.shields.io/badge/Download-Offline%20SDK-orange)](https://www.dynamsoft.com/barcode-reader/downloads)
+- [![](https://img.shields.io/badge/Get-30--day%20FREE%20Trial%20License-blue)](https://www.dynamsoft.com/customer/license/trialLicense/?product=dbr)
+- [![](https://img.shields.io/badge/Try-Online%20Demo-brightgreen)](https://demo.dynamsoft.com/dbr_wasm/barcode_reader_javascript.html)
 
-    ![copy_python_barcode](http://www.codepool.biz/wp-content/uploads/2015/07/copy_python_barcode.png)
-    
-4. Create a Python module `dbr.py`.
+## Python Development Environment
 
-    ```Python
-    import os.path
-    from dbr import DynamsoftBarcodeReader
-    dbr = DynamsoftBarcodeReader()
+- Python 3.7.9
 
-    def decodeFile(fileName):
-        if not os.path.isfile(fileName):
-            print "It is not a valid file."
-            return
-
-        results = dbr.decodeFile(fileName, config.barcodeTypes)
-        json = {}
-        tmp = []
-        i = 0
-
-        # Convert results to JSON
-        for result in results:
-            key = formats[result[0]]
-            value = result[1]
-            tmp = [key, value]
-            json[i] = tmp
-            i += 1;
-
-        return str(json)
-
+    ```bash
+    python --version
     ```
 
-5. Import the module to `views.py`.
-6. Detect the uploaded Barcode image files and return results to Web client.
+- Django 3.2.7
+    
+    ```bash
+    python -m pip install Django
+    python -m django --version
+    ```
 
-    ![load_multi_barcode](http://www.codepool.biz/wp-content/uploads/2015/07/load_multi_barcode.png)
-    ![barcode_results](http://www.codepool.biz/wp-content/uploads/2015/07/barcode_results.png)
+## Usage
+1. Download and install [Dynamic Web TWAIN](https://www.dynamsoft.com/web-twain/downloads).
+2. Create folder `static/dwt` under the project root directory.
+3. Copy and paste `Dynamic Web TWAIN SDK version/Resources` folder to `static/dwt/`.
+4. Install Dynamsoft Barcode Reader
+    
+    ```bash
+    pip install dbr
+    ```
+5. Set license keys for Dynamic Web TWAIN and Dynamsoft Barcode Reader.
+    
+    ```js
+    Dynamsoft.DWT.ProductKey = 'DWT-KEY';
+    ```
+    
+    ```python
+    reader.init_license("DBR-KEY")
+    ```
 
-Blog
-----
-[Reading Barcode from Scanned Documents][6]
+6. Run the project:
 
-[1]:https://www.djangoproject.com/download/
-[2]:http://www.dynamsoft.com/Downloads/WebTWAIN_Download.aspx
-[3]:http://www.dynamsoft.com/Downloads/Dynamic-Barcode-Reader-Download.aspx
-[4]:https://github.com/dynamsoftsamples/dwt-django-file-upload#basic-steps
-[5]:https://github.com/dynamsoft-dbr/python
-[6]:http://www.codepool.biz/read-barcode-from-documents.html
+    ```bash
+    python manage.py makemigrations
+    python manage.py migrate --run-syncdb
+    python manage.py runserver
+    ``` 
+    
+7. visit `127.0.0.1:8000` in a web browser.
+
+    ![load_multi_barcode](https://www.codepool.biz/wp-content/uploads/2015/07/load_multi_barcode.png)
+
+    ![barcode_results](https://www.codepool.biz/wp-content/uploads/2015/07/barcode_results.png)
+
+## Blog
+[Reading Barcode from Scanned Documents](https://www.codepool.biz/read-barcode-from-documents.html)
+
