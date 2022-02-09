@@ -59,5 +59,5 @@ The sample demonstrates how to create an online Barcode Reader with Django, [Dyn
     ![barcode_results](https://www.codepool.biz/wp-content/uploads/2015/07/barcode_results.png)
 
 ## Blog
-[Reading Barcode from Scanned Documents](https://www.codepool.biz/read-barcode-from-documents.html)
+[How to Build Online Barcode Scanning App with Python Django](https://www.dynamsoft.com/codepool/django-barcode-scanning-app.html)
 
