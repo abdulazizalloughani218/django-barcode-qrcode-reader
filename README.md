@@ -25,7 +25,7 @@ The sample demonstrates how to create an online Barcode Reader with Python Djang
 Apply for a [trial license](https://www.dynamsoft.com/customer/license/trialLicense/?product=dbr) and then update the following Python code:
 
 ```python
-reader.init_license("LICENSE-KEY")
+reader.init_license("DBR-KEY")
 ```
 
 ## Usage
