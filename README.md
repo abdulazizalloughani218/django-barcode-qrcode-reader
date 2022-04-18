@@ -1,4 +1,4 @@
-# Online Barcode Reader with Python Django
+# Online Barcode and QR Code Reader with Python Django
 The sample demonstrates how to create an online Barcode Reader with Python Django and [Dynamsoft Barcode Reader SDK](https://www.dynamsoft.com/barcode-reader/overview/).
 
 ## Prerequisites
